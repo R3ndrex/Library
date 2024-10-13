@@ -8,16 +8,36 @@
         <title>Library</title>
     </head>
     <body>
-        <form method="post" action="" novalidate class="book-form">
-            <label for="book-title">Enter book title</label>
-            <input type="text" name="title" id="book-title" />
-            <label for="book-author">Enter book author</label>
-            <input type="text" name="author" id="book-author" />
-            <label for="book-pages">Enter book pages</label>
-            <input type="number" name="pages" id="book-pages" />
-            <label for="book-read">Have you read it?</label>
-            <input type="checkbox" name="read" id="book-read" />
-            <button type="submit">Create new Book</button>
-        </form>
+        <header>
+            <h1>Library</h1>
+            <div>
+                <label for="book-sort">Sort books</label>
+                <input type="text" name="sort" id="book-sort" />
+            </div>
+            <button type="button" class="menu-create-book">ADD BOOK</button>
+        </header>
+        <main>
+            <ul class="book-list"></ul>
+            <form action="" novalidate class="book-form">
+                <div class="inputs">
+                    <label for="book-title">Enter book title</label>
+                    <input type="text" name="title" id="book-title" />
+                    <label for="book-author">Enter book author</label>
+                    <input type="text" name="author" id="book-author" />
+                    <label for="book-pages">Enter book pages</label>
+                    <input type="number" name="pages" id="book-pages" />
+                    <label for="book-read">Have you read it?</label>
+                    <input type="checkbox" name="read" id="book-read" />
+                </div>
+                <img
+                    src="./close-circle-outline.svg"
+                    alt="Exit-Button"
+                    width="32"
+                    height="32"
+                    class="exit-form-button"
+                />
+                <button type="submit">Create new Book</button>
+            </form>
+        </main>
     </body>
 </html>
