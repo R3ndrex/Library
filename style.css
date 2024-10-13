@@ -3,6 +3,7 @@
 *::before {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -11,6 +12,18 @@ body {
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
 }
+
+h1 {
+    margin: 0;
+}
+
+header {
+    position: sticky;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .book-form {
     position: absolute;
     left: calc(50% - 25vh);
@@ -18,20 +31,27 @@ body {
     border: 1px solid black;
     height: 50vh;
     width: 50vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 32px;
     padding: 1rem;
     gap: 1rem;
+    display: none;
 }
-.book-form > input[type="checkbox"] {
-    align-self: self-start;
+.inputs {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
 }
+
+.inputs > input[type="checkbox"] {
+    width: fit-content;
+    justify-self: start;
+}
+
 .book-form > button {
+    grid-column: 1/-1;
     margin-top: auto;
     font-family: inherit;
     padding: 1rem 1.2rem;
-    align-self: center;
-}
-.disable {
-    display: none;
+    justify-self: center;
 }
