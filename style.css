@@ -16,15 +16,31 @@ body {
 h1 {
     margin: 0;
 }
+h2 {
+    margin-top: 0;
+}
 
 header {
     position: sticky;
     display: flex;
+    top: 0;
+    padding: 1rem;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid black;
+    border-top: none;
+    background-color: white;
+    z-index: 1;
+    & > div {
+        font-size: 1.5rem;
+    }
+    & > button {
+        padding: 1rem 1.2rem;
+    }
 }
 
 .book-form {
+    background-color: white;
     position: absolute;
     left: calc(50% - 25vh);
     top: calc(50% - 25vh);
@@ -35,8 +51,13 @@ header {
     grid-template-columns: 1fr 32px;
     padding: 1rem;
     gap: 1rem;
+    z-index: 1;
+}
+
+.disabled {
     display: none;
 }
+
 .inputs {
     display: flex;
     gap: 1rem;
@@ -54,4 +75,47 @@ header {
     font-family: inherit;
     padding: 1rem 1.2rem;
     justify-self: center;
+}
+
+ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    width: 66ch;
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+}
+
+li {
+    line-height: 1.5;
+    overflow: auto;
+    padding: 1rem;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
+
+li::first-line {
+    font-size: 2rem;
+}
+
+li {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+button {
+    background-color: white;
+}
+
+.item-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit-button {
+    height: 32px;
+    width: 32px;
 }
