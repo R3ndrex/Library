@@ -12,13 +12,18 @@
             <h1>Library</h1>
             <div>
                 <label for="book-sort">Sort books</label>
-                <input type="text" name="sort" id="book-sort" />
+                <input
+                    type="text"
+                    name="sort"
+                    id="book-sort"
+                    class="sort-books"
+                />
             </div>
-            <button type="button" class="menu-create-book">ADD BOOK</button>
+            <button type="button" class="menu-create-book">Add Book</button>
         </header>
         <main>
             <ul class="book-list"></ul>
-            <form action="" novalidate class="book-form">
+            <form action="" novalidate class="disabled book-form">
                 <div class="inputs">
                     <label for="book-title">Enter book title</label>
                     <input type="text" name="title" id="book-title" />
@@ -34,7 +39,7 @@
                     alt="Exit-Button"
                     width="32"
                     height="32"
-                    class="exit-form-button"
+                    class="exit-button"
                 />
                 <button type="submit">Create new Book</button>
             </form>
