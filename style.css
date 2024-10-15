@@ -39,21 +39,19 @@ header {
     }
 }
 
-.book-form {
-    background-color: white;
-    position: absolute;
-    left: calc(50% - 25vh);
-    top: calc(50% - 25vh);
+.form-menu {
     border: 1px solid black;
     height: 50vh;
     width: 50vh;
-    display: grid;
-    grid-template-columns: 1fr 32px;
-    padding: 1rem;
-    gap: 1rem;
-    z-index: 1;
 }
 
+.book-form {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 32px;
+    gap: 1rem;
+}
 .disabled {
     display: none;
 }
@@ -100,6 +98,7 @@ li {
         rgba(189, 0, 0, 0.5)
     );
 }
+
 .checked {
     background: linear-gradient(
         200deg,
@@ -107,6 +106,7 @@ li {
         rgba(0, 189, 0, 0.5)
     );
 }
+/* book card title */
 li::first-line {
     font-size: 2rem;
 }
