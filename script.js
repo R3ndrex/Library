@@ -1,7 +1,6 @@
 let books = [];
 
 const form = document.querySelector(".book-form");
-const formInputs = document.querySelectorAll(".inputs > input");
 const exitFormButton = document.querySelector(".exit-button");
 const bookList = document.querySelector(".book-list");
 const inputSortBooks = document.querySelector(".sort-books");
@@ -14,29 +13,38 @@ function Book(title, author, pages, read = false) {
     this.pages = pages;
     this.read = read;
 }
+Book.prototype.AddBookToLibrary = function () {
+    books.push(this);
+};
 
-function AddBookToLibrary(title, author, pages, read) {
-    books.push(new Book(title, author, pages, read));
-}
+Book.prototype.DeleteBook = function (li) {
+    bookList.removeChild(li);
+    books.splice(li.getAttribute("data-id"), 1);
+    const liItems = bookList.querySelectorAll("li");
+    books.forEach((book, index) => {
+        liItems[index].setAttribute("data-id", index);
+    });
+};
 
 function DisplayBooks(books) {
     bookList.innerHTML = "";
-    books.forEach((book, index) => CreateListElement(book, index));
+    books.forEach((book) => CreateListElement(book));
 }
 
-function CreateListElement(item, index) {
+function CreateListElement(item) {
     const li = document.createElement("li");
-    li.setAttribute("data-id", index);
-    for (const element in item) {
-        switch (element) {
+    li.setAttribute("data-id", books.indexOf(item));
+    for (const property in item) {
+        switch (property) {
             case "read":
-                CreateTextLineWithCheckbox(element, item, li);
+                CreateTextLineWithCheckbox(property, item, li);
                 break;
             case "title":
-                CreateHeader(element, item, li);
+                CreateHeader(property, item, li);
                 break;
-            default:
-                CreateTextLine(element, item, li);
+            case "author":
+            case "pages":
+                CreateTextLine(property, item, li);
                 break;
         }
     }
@@ -44,32 +52,33 @@ function CreateListElement(item, index) {
     bookList.appendChild(li);
 }
 
-function CreateHeader(element, item, li) {
+function CreateHeader(property, item, li) {
     const container = document.createElement("div");
     const button = document.createElement("img");
     button.src = "./close-circle-outline.svg";
     button.classList.add("exit-button");
-    button.addEventListener("click", () => DeleteBook(li));
+    button.addEventListener("click", () => item.DeleteBook(li));
+
     const heading = document.createElement("h2");
     container.classList.add("item-heading");
-    heading.textContent = `${element}: ${item[element]}`;
+    heading.textContent = `${property}: ${item[property]}`;
     container.appendChild(heading);
     container.appendChild(button);
     li.appendChild(container);
 }
 
-function CreateTextLine(element, item, li) {
-    const text = document.createTextNode(`${element}: ${item[element]}`);
+function CreateTextLine(property, item, li) {
+    const text = document.createTextNode(`${property}: ${item[property]}`);
     li.appendChild(text);
     li.appendChild(document.createElement("br")); // line break between lines
 }
 
 // if book.read create text line and checkbox
-function CreateTextLineWithCheckbox(element, item, li) {
-    const text = document.createTextNode(`${element}: `);
+function CreateTextLineWithCheckbox(property, item, li) {
+    const text = document.createTextNode(`${property}: `);
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    if (item[element]) {
+    if (item[property]) {
         li.classList.add("checked");
         checkbox.setAttribute("checked", "true");
     }
@@ -79,34 +88,23 @@ function CreateTextLineWithCheckbox(element, item, li) {
         } else {
             li.classList.remove("checked");
         }
-        item[element] = checkbox.checked;
+        item[property] = checkbox.checked;
     });
     li.appendChild(text);
     li.appendChild(checkbox);
 }
 
-function DeleteBook(li) {
-    bookList.removeChild(li);
-    books.splice(li.getAttribute("data-id"), 1);
-    const liItems = bookList.querySelectorAll("li");
-    books.forEach((book, index) => {
-        liItems[index].setAttribute("data-id", index);
-    });
-}
-
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    AddBookToLibrary(
+    const book = new Book(
         formData.get("title"),
         formData.get("author"),
         formData.get("pages"),
-        formData.get("read")
+        formData.get("read") === "on"
     );
-    formInputs[0].value = "";
-    formInputs[1].value = "";
-    formInputs[2].value = "";
-    formInputs[3].checked = false;
+    book.AddBookToLibrary();
+    form.reset();
     DisplayBooks(books);
     formMenu.close();
 });
