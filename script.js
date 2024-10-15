@@ -32,12 +32,12 @@ function reIndexItems() {
 
 function DisplayBooks(books) {
     bookList.innerHTML = "";
-    books.forEach((book) => CreateListElement(book));
+    books.forEach((book, index) => CreateListElement(book, index));
 }
 
-function CreateListElement(item) {
+function CreateListElement(item, index) {
     const li = document.createElement("li");
-    li.setAttribute("data-id", books.indexOf(item));
+    li.setAttribute("data-id", index);
     for (const property in item) {
         switch (property) {
             case "read":
