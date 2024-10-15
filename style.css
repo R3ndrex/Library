@@ -138,3 +138,6 @@ button {
     height: 32px;
     width: 32px;
 }
+input:user-invalid {
+    border-color: red;
+}
