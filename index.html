@@ -24,26 +24,43 @@
         </header>
         <main>
             <ul class="book-list"></ul>
-            <form action="" novalidate class="disabled book-form">
-                <div class="inputs">
-                    <label for="book-title">Enter book title</label>
-                    <input type="text" name="title" id="book-title" />
-                    <label for="book-author">Enter book author</label>
-                    <input type="text" name="author" id="book-author" />
-                    <label for="book-pages">Enter book pages</label>
-                    <input type="number" name="pages" id="book-pages" />
-                    <label for="book-read">Have you read it?</label>
-                    <input type="checkbox" name="read" id="book-read" />
-                </div>
-                <img
-                    src="./close-circle-outline.svg"
-                    alt="Exit-Button"
-                    width="32"
-                    height="32"
-                    class="exit-button"
-                />
-                <button type="submit">Create new Book</button>
-            </form>
+            <dialog class="form-menu">
+                <form action="" method="dialog" class="book-form">
+                    <div class="inputs">
+                        <label for="book-title">Enter book title</label>
+                        <input
+                            type="text"
+                            required
+                            name="title"
+                            id="book-title"
+                        />
+                        <label for="book-author">Enter book author</label>
+                        <input
+                            type="text"
+                            required
+                            name="author"
+                            id="book-author"
+                        />
+                        <label for="book-pages">Enter book pages</label>
+                        <input
+                            type="number"
+                            required
+                            name="pages"
+                            id="book-pages"
+                        />
+                        <label for="book-read">Have you read it?</label>
+                        <input type="checkbox" name="read" id="book-read" />
+                    </div>
+                    <img
+                        src="./close-circle-outline.svg"
+                        alt="Exit-Button"
+                        width="32"
+                        height="32"
+                        class="exit-button"
+                    />
+                    <button type="submit">Create new Book</button>
+                </form>
+            </dialog>
         </main>
     </body>
 </html>
