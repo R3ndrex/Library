@@ -54,6 +54,12 @@ header {
     display: grid;
     grid-template-columns: 1fr 32px;
     gap: 1rem;
+    legend {
+        position: relative;
+        left: 24px;
+        text-align: center;
+        font-size: 2rem;
+    }
 }
 .disabled {
     display: none;
