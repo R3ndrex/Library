@@ -18,13 +18,17 @@ Book.prototype.AddBookToLibrary = function () {
 };
 
 Book.prototype.DeleteBook = function (li) {
-    bookList.removeChild(li);
+    li.remove();
     books.splice(li.getAttribute("data-id"), 1);
+    reIndexItems();
+};
+
+function reIndexItems() {
     const liItems = bookList.querySelectorAll("li");
     books.forEach((book, index) => {
         liItems[index].setAttribute("data-id", index);
     });
-};
+}
 
 function DisplayBooks(books) {
     bookList.innerHTML = "";
