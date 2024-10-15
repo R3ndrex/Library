@@ -1,12 +1,12 @@
 let books = [];
 
 const form = document.querySelector(".book-form");
-const formInputs = document.querySelectorAll(".book-form input");
+const formInputs = document.querySelectorAll(".inputs > input");
 const exitFormButton = document.querySelector(".exit-button");
 const bookList = document.querySelector(".book-list");
 const inputSortBooks = document.querySelector(".sort-books");
-const formButton = document.querySelector(".book-form>button");
 const menuButton = document.querySelector(".menu-create-book");
+const formMenu = document.querySelector(".form-menu");
 
 function Book(title, author, pages, read = false) {
     this.title = title;
@@ -94,24 +94,25 @@ function DeleteBook(li) {
     });
 }
 
-formButton.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
+    const formData = new FormData(form);
     AddBookToLibrary(
-        formInputs[0].value,
-        formInputs[1].value,
-        formInputs[2].value,
-        formInputs[3].checked
+        formData.get("title"),
+        formData.get("author"),
+        formData.get("pages"),
+        formData.get("read")
     );
     formInputs[0].value = "";
     formInputs[1].value = "";
     formInputs[2].value = "";
     formInputs[3].checked = false;
     DisplayBooks(books);
+    formMenu.close();
 });
 
-menuButton.addEventListener("click", () => form.classList.remove("disabled"));
-
-exitFormButton.addEventListener("click", () => form.classList.add("disabled"));
+menuButton.addEventListener("click", () => formMenu.showModal());
+exitFormButton.addEventListener("click", () => formMenu.close());
 
 inputSortBooks.addEventListener("input", (e) => {
     const liItems = bookList.querySelectorAll("li");
