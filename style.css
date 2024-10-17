@@ -141,3 +141,7 @@ button {
 input:user-invalid {
     border-color: red;
 }
+
+img {
+    vertical-align: bottom;
+}
