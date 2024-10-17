@@ -118,7 +118,15 @@ form.addEventListener("submit", (e) => {
     formMenu.close();
 });
 
-menuButton.addEventListener("click", () => formMenu.showModal());
+menuButton.addEventListener("click", () => {
+    formMenu.showModal();
+    window.addEventListener("click", (e) => {
+        if (e.target.contains(formMenu)) {
+            formMenu.close();
+        }
+    });
+});
+
 exitFormButton.addEventListener("click", () => formMenu.close());
 
 inputSortBooks.addEventListener("input", (e) => {
