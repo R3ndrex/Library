@@ -145,3 +145,7 @@ input:user-invalid {
 img {
     vertical-align: bottom;
 }
+[type="checkbox"],
+button {
+    cursor: pointer;
+}
