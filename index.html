@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./style.css" />
         <link rel="shortcut icon" href="./bookshelf.svg" type="image/x-icon" />
+        <script src="./events.js"></script>
+        <script defer src="./stats.js"></script>
         <script defer src="./script.js"></script>
         <title>Library</title>
     </head>
@@ -25,6 +27,10 @@
             <button type="button" class="menu-create-book">Add Book</button>
         </header>
         <main>
+            <section>
+                <h1>Stats</h1>
+                <p class="all-books">Books: 0</p>
+            </section>
             <ul class="book-list"></ul>
             <dialog class="form-menu">
                 <form action="" method="dialog" class="book-form">

@@ -149,3 +149,10 @@ img {
 button {
     cursor: pointer;
 }
+
+section {
+    display: inline-block;
+    padding: 1rem;
+    border: 1px solid black;
+    border-top: none;
+}
