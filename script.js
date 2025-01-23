@@ -5,7 +5,7 @@ const bookList = document.querySelector(".book-list");
 const inputSortBooks = document.querySelector(".sort-books");
 const menuButton = document.querySelector(".menu-create-book");
 const formMenu = document.querySelector(".form-menu");
-
+const formInputs = document.querySelectorAll("form input");
 const library = (function () {
     const books = [];
 
@@ -100,6 +100,11 @@ function Book(title, author, pages, read = false) {
     this.pages = pages;
     this.read = read;
 }
+formInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        input.reportValidity();
+    });
+});
 
 form.addEventListener("submit", () => {
     const formData = new FormData(form);
